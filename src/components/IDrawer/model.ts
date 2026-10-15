@@ -56,7 +56,6 @@ const useModel = ({
         () => allOptions.value.closeOnEsc,
         (closeOnEsc) => {
             closeOnEsc ? window.addEventListener('keydown', handleEscClose) : window.removeEventListener('keydown', handleEscClose);
-            console.log('w-worked')
         },
         { immediate: true }
     )
