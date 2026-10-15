@@ -1,23 +1,23 @@
 {
   "name": "i-drawer-vue",
-        "description": "A reusable Drawer component for Vue 3",
-        "type": "module",
+  "description": "A reusable Drawer component for Vue 3",
+  "type": "module",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "files": [
-            "dist"
-        ],
-        "main": "./dist/i-drawer-vue.umd.js",
-        "module": "./dist/i-drawer-vue.es.js",
-        "types": "./dist/index.d.ts",
-        "exports": {
-            ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/i-drawer-vue.es.js",
-            "require": "./dist/i-drawer-vue.umd.js"
-            },
-            "./dist/style.css": "./dist/i-drawer-vue.css"
-        },
+    "dist"
+  ],
+  "main": "./dist/i-drawer-vue.umd.js",
+  "module": "./dist/i-drawer-vue.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/i-drawer-vue.es.js",
+      "require": "./dist/i-drawer-vue.umd.js"
+    },
+    "./dist/style.css": "./dist/i-drawer-vue.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
