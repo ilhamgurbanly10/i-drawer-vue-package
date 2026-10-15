@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import type { Props, Emits } from './types';
 import useModel from './model';
-import { ref } from 'vue';
-import { defaultSize } from './data';
 import { defineAsyncComponent } from 'vue'
 import CloseIcon from "./components/CloseIcon";
 import { getSizeInPixels, toPxString } from './utils/size';
@@ -26,11 +24,9 @@ const {
     bodyWidth,
     slotsCheck, 
     allOptions, 
-    controlledSize
+    controlledSize, 
+    size
 } = useModel({ options: options, emits });
-
-console.log(getSizeInPixels(allOptions.value.size, getPlacement(allOptions.value.placement).property), 'getSizeInPixels')
-const size = ref<number>(defaultSize);
 
 </script>
 
@@ -40,7 +36,6 @@ const size = ref<number>(defaultSize);
         :class="{ 'i-drawer-mask': allOptions.mask, 'i-drawer-show': show, 'i-drawer-hide-on-desktop': allOptions.hideOnDesktop }"
         :style="{ backgroundColor: allOptions.maskColor, zIndex: allOptions.zIndex }">
 
-        <!-- <Transition> -->
         <div @click.stop aria-modal="true" class="i-drawer-content" :class="{
             'i-drawer-right': placementPos.isRight,
             'i-drawer-left': placementPos.isLeft,
@@ -50,12 +45,12 @@ const size = ref<number>(defaultSize);
         }" :style="{
             backgroundColor: allOptions.contentColor,
             zIndex: allOptions.zIndex + 1,
-            width: placementPos.isY ? '100dvw' : controlledSize ? allOptions.size : toPxString(size),
-            minWidth: placementPos.isY ? '100dvw' : allOptions.minSize ?? 'auto',
-            maxWidth: placementPos.isY ? '100dvw' : allOptions.maxSize ?? '100dvw',
-            height: placementPos.isX ? '100dvh' : controlledSize ? allOptions.size : toPxString(size),
-            maxHeight: placementPos.isX ? '100dvh' : allOptions.maxSize ?? '100dvh',
-            minHeight: placementPos.isX ? '100dvh' : allOptions.minSize ?? 'auto',
+            width: placementPos.isY ? '100vw' : controlledSize ? allOptions.size : toPxString(size),
+            minWidth: placementPos.isY ? '100vw' : allOptions.minSize ?? 'auto',
+            maxWidth: placementPos.isY ? '100vw' : allOptions.maxSize ?? '100vw',
+            height: placementPos.isX ? '100vh' : controlledSize ? allOptions.size : toPxString(size),
+            maxHeight: placementPos.isX ? '100vh' : allOptions.maxSize ?? '100vh',
+            minHeight: placementPos.isX ? '100vh' : allOptions.minSize ?? 'auto',
             padding: `${allOptions.padding}px`
         }">
 
@@ -80,7 +75,6 @@ const size = ref<number>(defaultSize);
                 <slot name="footer" />
             </div>
         </div>
-        <!-- </Transition> -->
 
     </div>
     </Transition>

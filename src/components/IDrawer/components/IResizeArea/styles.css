@@ -4,6 +4,7 @@
     --resizeIconSize: 30px;
     --resizeLightGray: rgb(225, 224, 224);
     --resizeGray: rgb(182, 182, 182);
+    z-index: 9999;
     background-color: var(--resizeLightGray);
     touch-action: none;
     user-select: none;

@@ -29,7 +29,8 @@
     height: 0;
     visibility: hidden;
     z-index: -1;
-    overflow: hidden;
+    overflow: hidden;    
+    position: fixed;
 
     &:not(.i-drawer-enter-active, .i-drawer-leave-active) {
         transition: width 0s ease var(--animationTime),
@@ -52,9 +53,8 @@
     }
 
     &.i-drawer-mask {
-        width: 100dvw;
-        height: 100dvh;
-        position: fixed;
+        width: 100vw;
+        height: 100vh;
         inset: 0;
     }
 
@@ -63,7 +63,7 @@
         position: fixed;
         transition: left var(--animationTime), right var(--animationTime), top var(--animationTime), bottom var(--animationTime);
         display: flex;
-        overflow: hidden;
+        overflow: auto;
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;

@@ -1,7 +1,7 @@
-import { computed, onMounted, onUnmounted, useSlots } from "vue";
+import { computed, onUnmounted, ref, useSlots, watch } from "vue";
 import type { ModelReturn, ModelProps, PlacementPos, SlotsCheck, AllOptions } from "./types";
 import { getPlacement } from "./utils/placement";
-import { initialOptions } from "./data";
+import { defaultSize, initialOptions } from "./data";
 
 const useModel = ({
     options,
@@ -32,6 +32,17 @@ const useModel = ({
     const headerWidth = computed<string>(() => allOptions.value.showCloseBtn ? '94%' : '100%');
     const bodyWidth = computed<string>(() => allOptions.value.showCloseBtn && !slotsCheck.value.hasHeader ? '94%' : '100%');
     const controlledSize = computed<boolean>(() => options?.size !== undefined);
+    const size = ref<number>(defaultSize);
+    watch(
+       [
+         () => allOptions.value.placement, 
+         controlledSize.value
+       ],
+        (_placement) => {
+           if (controlledSize.value) size.value = defaultSize;
+        },
+        { immediate: false }
+    )
     // end-calculate-sizes
 
     // close-handlers
@@ -41,9 +52,14 @@ const useModel = ({
     // end-close-handlers
 
     // esc
-    onMounted(() => {
-        if (allOptions.value.closeOnEsc) { window.addEventListener('keydown', handleEscClose); }
-    });
+    watch(
+        () => allOptions.value.closeOnEsc,
+        (closeOnEsc) => {
+            closeOnEsc ? window.addEventListener('keydown', handleEscClose) : window.removeEventListener('keydown', handleEscClose);
+            console.log('w-worked')
+        },
+        { immediate: true }
+    )
 
     onUnmounted(() => {
         if (allOptions.value.closeOnEsc) { window.removeEventListener('keydown', handleEscClose); }
@@ -58,7 +74,8 @@ const useModel = ({
         bodyWidth,
         slotsCheck,
         allOptions,
-        controlledSize
+        controlledSize, 
+        size
     }
 
 }

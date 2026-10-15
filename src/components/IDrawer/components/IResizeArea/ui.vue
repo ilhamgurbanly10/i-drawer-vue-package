@@ -9,7 +9,7 @@ const {
     onPointerDown, 
     onPointerMove, 
     onPointerUp
-} = useModel({emits, size, pos});
+} = useModel({emits, size});
 
 </script>
 
@@ -19,7 +19,7 @@ const {
         'i-drawer-r-left': pos.isLeft,
         'i-drawer-r-top': pos.isTop,
         'i-drawer-r-bottom': pos.isBottom
-    }" @pointerdown="onPointerDown" @pointermove="onPointerMove" @pointerup="onPointerUp"
+    }" @pointerdown="onPointerDown" @pointermove="onPointerMove($event, pos)" @pointerup="onPointerUp"
         @pointercancel="onPointerUp" />
 </template>
 

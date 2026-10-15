@@ -1,10 +1,10 @@
 import { ref } from "vue";
 import type { ModelReturn, ModelProps } from "./types";
+import type { PlacementPos } from "../../types";
 
 const useModel = ({
     emits,
-    size,
-    pos
+    size
 }: ModelProps): ModelReturn => {
 
     const resizing = ref<boolean>(false);
@@ -16,6 +16,8 @@ const useModel = ({
         emits('onResizeStart');
         (event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
         document.body.style.userSelect = 'none';
+        document.body.style.webkitUserSelect = 'none';
+         window.getSelection()?.removeAllRanges();
     };
 
     const handleRightPosResize = (event: PointerEvent): void => {
@@ -113,7 +115,7 @@ const useModel = ({
 
     }
 
-    const onPointerMove = (event: PointerEvent) => {
+    const onPointerMove = (event: PointerEvent, pos: PlacementPos) => {
         if (!resizing.value) return;
 
         if (pos.isRight) handleRightPosResize(event); 

@@ -1,4 +1,4 @@
-import type { ComputedRef, EmitFn } from 'vue';
+import type { ComputedRef, EmitFn, Ref } from 'vue';
 
 export type Placement = 'top' | 'bottom' | 'right' | 'left';
 
@@ -6,7 +6,6 @@ export interface Options {
     closeableCloseBtn?: boolean;
     showCloseBtn?: boolean;
     zIndex?: number;
-    center?: boolean;
     closeOnEsc?: boolean;
     size?: string;
     maxSize?: string | null;
@@ -45,6 +44,7 @@ export interface ModelReturn {
     slotsCheck: ComputedRef<SlotsCheck>;
     allOptions: ComputedRef<AllOptions>;
     controlledSize: ComputedRef<boolean>;
+    size: Ref<number>;
 }
 
 export interface ModelProps {

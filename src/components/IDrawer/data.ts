@@ -1,17 +1,16 @@
 import type { Options } from "./types";
 
-export const defaultSize: number = 300;
+export const defaultSize: number = 400;
 
 export const initialOptions: Required<Options> = {
     closeableCloseBtn: true,
     showCloseBtn: true,
     closeableMask: true,
     zIndex: 9999999, 
-    center: true, 
     closeOnEsc: true,
     size: `${defaultSize}px`,
-    maxSize: null,
-    minSize: null,
+    maxSize: '95%',
+    minSize: '10%',
     maskColor: 'rgba(0, 0, 0, .5)', 
     contentColor: 'white', 
     resizable: true, 

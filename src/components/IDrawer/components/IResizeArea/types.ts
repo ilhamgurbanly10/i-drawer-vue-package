@@ -14,14 +14,13 @@ export type Emits = {
 };
 
 export interface ModelReturn {
-    onPointerMove: (event: PointerEvent) => void;
+    onPointerMove: (event: PointerEvent, pos: PlacementPos) => void;
     onPointerUp: (event: PointerEvent) => void;
     onPointerDown: (event: PointerEvent) => void;
 
 }
 
 export interface ModelProps {
-    pos: PlacementPos;
     size: number;
     emits: EmitFn<Emits>;
     
