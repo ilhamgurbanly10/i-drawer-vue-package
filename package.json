@@ -4,6 +4,17 @@
   "type": "module",
   "private": false,
   "version": "1.0.1",
+  "keywords": [
+    "vue",
+    "vue3",
+    "vuejs",
+    "drawer",
+    "sidebar",
+    "resizable-drawer",
+    "vue-drawer",
+    "vue-component",
+    "typescript"
+  ],
   "files": [
     "dist"
   ],
