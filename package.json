@@ -3,6 +3,8 @@
   "description": "A reusable Drawer component for Vue 3",
   "type": "module",
   "private": false,
+  "author": "Ilham Gurbanly",
+  "license": "MIT",
   "version": "1.0.4",
   "keywords": [
     "vue",
